@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, except [:home, :show]
+    before_action :authenticate_user!, except: [:home, :show]
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action :authorize_author, only [:edit, :update, :destroy]
-
+    before_action :authorize_user, only: [:edit, :update, :destroy]
+    
     def home 
         @posts = Post.all.order(created_at: :desc)
     end
@@ -12,18 +12,27 @@ class PostsController < ApplicationController
     end
 
     def new
-        @posts = current_user.posts.build
+        @post = current_user.posts.build
         #build is like new but assosiates with current_user
     end
 
-    def create
-        @posts = current_user.posts.build(post_params)
-        if @post.save
-            #success - redirect to new post
-        else
-            #failure - return to form page with errors
-        end
 
+    def create
+       @post = current_user.posts.build(post_params)
+
+       if @post.save
+        redirect_to @post, notice: "Post created successfully!"
+
+       else
+        flash.now[:alert] = @post.errors.full_messages.to_sentence
+        render :new, status: :unprocessable_entity
+       end
+
+    
+      end
+      
+    
+      
     def edit
         # Post is already set with set_post
     end
@@ -35,6 +44,7 @@ class PostsController < ApplicationController
             #failure
 
         end
+    end
 
     def destroy
         @post.destroy
@@ -50,6 +60,7 @@ class PostsController < ApplicationController
 
     end
 
-    def authorize_author
+    def authorize_user
         redirect_to root_path, alert: "Not Auothrized" unless @post.user == current_user
+end
 end

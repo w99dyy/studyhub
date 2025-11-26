@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html">
   <head>
     <title><%= content_for(:title) || "Studyhub" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,6 +8,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+  
+    
 
     <%= yield :head %>
 
@@ -21,9 +23,43 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+      <body class="bg-white dark:bg-gray-900 min-h-screen text-white">
+        <header class="bg-white dark:bg-gray-800 px-3 py-3 ring shadow-xl ring-gray-900/5">
+      <h1 class="text-5xl font-bold dark:text-white"><%= link_to "StudyHub", root_path %></h1>
+
+
+
+ <div class="flex flex-ver justify-end absolute top-4 right-4 gap-0">
+ <%= link_to "Create Post",
+ new_post_path,
+ class: "bg-cyan-500 inline-block hover:bg-cyan-600 text-white font-medium py-2 px-4 mr-3 rounded-full shadow transition duration-200" %>
+
+ <div class= "actions bg-cyan-500 py-2 px-4 inline-block hover:bg-cyan-600 text-white font-medium  rounded-full shadow transition duration-200">
+
+ <% if user_signed_in? %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+    
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path %> 
+    <% end %>
+     <%#<div class="text-sm ">Welcome <%= current_user.email</div>%> 
+  </div>
+    </div>
+
+
+
+    
+      
+  </header>
+
+
+
   </head>
 
-  <body>
+
     <%= yield %>
+   
+       
   </body>
 </html>
