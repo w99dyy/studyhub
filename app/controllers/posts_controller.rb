@@ -8,8 +8,9 @@ class PostsController < ApplicationController
     end
 
     def show
-        # Just displays the post found by set_post
-    end
+        @post = Post.find(params[:id])
+        @comments = @post.comments  # This line must be present
+      end
 
     def new
         @post = current_user.posts.build

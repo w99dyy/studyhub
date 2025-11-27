@@ -21,4 +21,5 @@ get '/profile', to: 'user#show', as: 'user_profile'
 
 resources :posts
 
+
 end
