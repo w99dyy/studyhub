@@ -1,0 +1,47 @@
+<div class="mt-7">
+  <div class="recent-posts grid grid-cols-1 max-w-full md:max-w-4xl mx-auto ">
+  <div class="border border-cyan-600">
+  <h1 class="text-3xl font-bold dark:text-white pl-3 pb-3 pt-2 bg-cyan-600">Recent posts</h1>
+
+    <% if @recent_posts.any? %>
+      <% @recent_posts.each do |post| %>
+        
+        <div class="bg-gray-700 p-4 pb-3 border border-gray-600 ">
+          <!-- Post title --->
+          <%= link_to post.title, post, class: "text-white hover:text-blue-300 font-medium" %>
+          
+        <p class="text-gray-300 text-sm mb-2 line-clamp-2 pt-1">
+        
+    <%= post.description || truncate(post.content.to_plain_text, length: 120) %>
+  </p>
+   <!-- Post info -->
+  <!-- Metadata -->
+  <div class="text-xs text-gray-500">
+    Posted by <%= post.user.username %> • <%= time_ago_in_words(post.created_at) %> ago
+  </div>
+  <!-- Post tags -->
+  <% if post.tags.any? %>
+    <div class="tags pt-2">
+      <div class="flex flex-wrap gap-1">
+        <% post.tags.each do |tag| %>
+         <%= link_to tag.name, posts_path(tag: tag.name),
+              class: "bg-blue-700 text-white px-2 py-1 rounded text-xs hover:bg-blue-600" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-white">No posts yet</p>
+    <% end %>
+
+    
+  </div>
+
+  
+  
+</div>
+
+
+</div>

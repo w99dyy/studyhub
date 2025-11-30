@@ -1,20 +1,27 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, except: [:home, :show]
+    before_action :authenticate_user!, except: [:index, :show]
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :authorize_user, only: [:edit, :update, :destroy]
+
+
+
     
-    def home 
+    def index
+      if params[:tag].present?
+        @posts = Post.tagged_with(params[:tag]).order(created_at: :desc)
+      else
         @posts = Post.all.order(created_at: :desc)
+      end
     end
 
+  
     def show
-        @post = Post.find(params[:id])
-        @comments = @post.comments  # This line must be present
+        @comments = @post.comments.order(created_at: :desc) 
+
       end
 
     def new
         @post = current_user.posts.build
-        #build is like new but assosiates with current_user
     end
 
 
@@ -22,8 +29,7 @@ class PostsController < ApplicationController
        @post = current_user.posts.build(post_params)
 
        if @post.save
-        redirect_to @post, notice: "Post created successfully!"
-
+        redirect_to @post
        else
         flash.now[:alert] = @post.errors.full_messages.to_sentence
         render :new, status: :unprocessable_entity
@@ -35,12 +41,14 @@ class PostsController < ApplicationController
     
       
     def edit
-        # Post is already set with set_post
+        @post = Post.find(params[:id])
+
+
     end
 
     def update
         if @post.update(post_params)
-            # Success
+            redirect_to @post, notice: "Post created successfully!"
         else
             #failure
 
@@ -48,18 +56,25 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        @post.destroy
-        redirect_to posts_url #go back to posts list
-    end
+    
+    @post.destroy
+    redirect_to root_path, notice: "Post deleted successfully!"
+  end
 
     def set_post  #Find the post
-        @post = Post.find(params[:id])
-    end
+        @post = Post.find_by(id: params[:id])
+        unless @post
+            redirect_to posts_path, alert: "Post not found."
+          end
+        end
+    
+    private
 
-    def post_params #Security filter
-        params.require(:post).permit(:title, :content, :tags) #Allow only this fields to be saved
+    def post_params
+      params.require(:post).permit(:title, :content, :tag_list)
 
     end
+    
 
     def authorize_user
         redirect_to root_path, alert: "Not Auothrized" unless @post.user == current_user

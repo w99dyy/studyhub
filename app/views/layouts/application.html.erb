@@ -23,14 +23,15 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+  
 
       <body class="bg-white dark:bg-gray-900 min-h-screen text-white">
         <header class="bg-white dark:bg-gray-800 px-3 py-3 ring shadow-xl ring-gray-900/5">
-      <h1 class="text-5xl font-bold dark:text-white"><%= link_to "StudyHub", root_path %></h1>
+      <h1 class="text-3xl sm:text-5xl font-bold dark:text-white"><%= link_to "StudyHub", root_path %></h1>
 
 
-
- <div class="flex flex-ver justify-end absolute top-4 right-4 gap-0 ">
+ <div class="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-4 absolute top-4 right-4 gap-0 ">
  <%= link_to "Create Post",
  new_post_path,
  class: "bg-cyan-500 inline-block hover:bg-cyan-600 text-white font-medium py-2 px-4 mr-3 rounded-full shadow transition duration-200" %>
@@ -55,10 +56,12 @@
 
 
 
-  </head>
 
 
-    <%= yield %>
+
+   <div class="pb-20">
+  <%= yield %>
+</div>
    
        
   </body>

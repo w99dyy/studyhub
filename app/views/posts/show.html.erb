@@ -1,10 +1,45 @@
-
-
 <div class="max-w-full md:max-w-3xl mt-5 mx-4 md:mx-15 bg-gray-800 border border-gray-600 rounded-md mb-4 px-4 md:px-[0.5em] py-4 md:py-[1em]">
-  <div class="text-xl md:text-2xl lg:text-3xl font-bold pb-4 md:pb-8">
+  <div class="text-xl md:text-2xl lg:text-3xl font-bold md:pb-5">
+
+<!-- 3 dots menu -->
+ 
+ <% if current_user && current_user == @post.user %>
+  <div class="relative inline-block float-right">
+  <button class="peer hover:bg-gray-700 rounded-full outline-none">
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
+  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+</svg>
+</button>
+
+<div class="absolute text-sm right-0 mt-2 opacity-0 invisible peer-focus:opacity-100 peer-focus:visible transition-all duration-200 bg-gray-800 rounded-lg shadow-[0_20px_40px_-1px_rgba(0,0,0,0.3)] w-48 z-10">
+  <%= link_to "Edit Post", edit_post_path(@post), class: "block px-4 py-3 hover:bg-gray-700 border-b border-gray-600" %> 
+  <%= button_to "Delete Post", post_path(@post), method: :delete, class: "block w-full text-left px-4 py-3 hover:bg-gray-700" %> 
+</div>
+  
+</div>
+
+<% end %>
+
+<!-- end -->
+
     <%= @post.title %>
   </div>
   <div class="prose max-w-none text-sm md:text-base">
+  <!-- Tags Display -->
+  <div class="flex flex-wrap items-center gap-3 pb-8">
+    <strong class="text-lg font-bold whitespace-nowrap">Tags:</strong>
+  <div class="flex flex-wrap items-center gap-1">
+    <% if @post.tags.any? %>
+      <% @post.tags.each do |tag| %>
+        <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
+          <%= tag.name %>
+        </span>
+      <% end %>
+    <% else %>
+      <p class="text-gray-400">No tags yet</p>
+    <% end %>
+  </div>
+</div>
     <%= @post.content %>
   </div>
 </div>
@@ -29,7 +64,7 @@
   </div>
 
   <% if @post.comments.any? %>
-    <% @post.comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <div class="comment pt-6">
         <p><%= comment.content %></p>
       </div>
@@ -38,5 +73,8 @@
     <p>No comments yet.</p>
   <% end %>
 <% end %>
+
+
 </div>
 </div>
+
