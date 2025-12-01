@@ -31,10 +31,24 @@
       <h1 class="text-3xl sm:text-5xl font-bold dark:text-white"><%= link_to "StudyHub", root_path %></h1>
 
 
- <div class="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-4 absolute top-4 right-4 gap-0 ">
- <%= link_to "Create Post",
- new_post_path,
- class: "bg-cyan-500 inline-block hover:bg-cyan-600 text-white font-medium py-2 px-4 mr-3 rounded-full shadow transition duration-200" %>
+ <div class="flex flex-grid sm:flex-row items-end sm:items-center gap-2 sm:gap-0 absolute top-3 right-4 gap-0 ">
+
+  <% if user_signed_in? %>
+ <%= link_to new_post_path, 
+    class: "flex items-center gap-2 group " do %>
+            <div class="bg-cyan-500 inline-block hover:bg-cyan-600 text-white font-medium py-2 px-4 rounded-full shadow transition duration-200 block md:hidden">
+
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+</svg>
+
+  </div>
+  <div class="hidden md:block">
+  <span class="bg-cyan-500 inline-block hover:bg-cyan-600 text-white font-medium py-2 px-4 mr-3 rounded-full shadow transition duration-200 ">Create Post</span>
+  </div>
+<% end %>
+<% end %>
+
 
  <div class= "actions bg-cyan-500 py-2 px-4 inline-block hover:bg-cyan-600 text-white font-medium  rounded-full shadow transition duration-200 ">
 
@@ -50,18 +64,53 @@
 
 
 
-    
+      <div class="md:hidden fixed bottom-4 right-4 z-50">
+  <button id="mobile-menu-button" class="p-2 rounded-md bg-gray-800 text-white">
+    <!-- Hamburger Icon -->
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+</div>
+
       
   </header>
 
 
+<% if !controller.class.name.start_with?('Devise::') %>
+<div class="flex flex-grow ">
+    <nav class="md:flex w-1/6 flex-col hidden p-4 sticky top-0 h-screen">
+        <ul class="space-y-2">  <!-- space-y-2 adds vertical spacing between items -->
+      <li>
+        <%= link_to root_path, class: "flex items-center gap-3 pl-8 py-2 hover:bg-gray-700 rounded-md group" do %>
+          <!-- Home Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+</svg>
 
+          <span class="text-gray-300 group-hover:text-white">Home</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to posts_path, class: "flex items-center gap-3 pl-8 py-2 hover:bg-gray-700 rounded-md group" do %>
+          <!-- Posts Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+</svg>
 
+          <span class="text-gray-300 group-hover:text-white">All posts</span>
+        <% end %>
+      </li>
+      </ul>
+    </nav>
+        <% end %>
 
-
-   <div class="pb-20">
+  <main class="flex-1">
+   <div class="pb-20 mx-auto">
   <%= yield %>
 </div>
+
+</main>
    
        
   </body>

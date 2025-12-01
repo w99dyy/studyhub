@@ -1,4 +1,6 @@
-<div class="max-w-full md:max-w-3xl mt-5 mx-4 md:mx-15 bg-gray-800 border border-gray-600 rounded-md mb-4 px-4 md:px-[0.5em] py-4 md:py-[1em]">
+<!-- <span class="max-w-full md:max-w-3xl mx-4 md:mx-15 text-xl md:text-2xl lg:text-3xl font-bold md:pb-2 inline-block pt-4">  </span> -->
+
+<div class="max-w-full md:max-w-4xl mx-auto bg-gray-800 border border-gray-700 rounded-md mb-4 px-4 md:px-[1em] py-4 md:py-[2em] mt-7">
   <div class="text-xl md:text-2xl lg:text-3xl font-bold md:pb-5">
 
 <!-- 3 dots menu -->
@@ -12,17 +14,19 @@
 </button>
 
 <div class="absolute text-sm right-0 mt-2 opacity-0 invisible peer-focus:opacity-100 peer-focus:visible transition-all duration-200 bg-gray-800 rounded-lg shadow-[0_20px_40px_-1px_rgba(0,0,0,0.3)] w-48 z-10">
-  <%= link_to "Edit Post", edit_post_path(@post), class: "block px-4 py-3 hover:bg-gray-700 border-b border-gray-600" %> 
-  <%= button_to "Delete Post", post_path(@post), method: :delete, class: "block w-full text-left px-4 py-3 hover:bg-gray-700" %> 
+  <%= link_to "Edit Post", edit_post_path(@post), class: "block px-4 py-3 hover:bg-gray-700 border-b border-gray-700" %> 
+  <%= button_to "Delete Post", post_path(@post), method: :delete,
+  data: { confirm: "Are you sure you want to delete this post?" },
+   class: "block w-full text-left px-4 py-3 hover:bg-gray-700" %> 
 </div>
   
 </div>
 
 <% end %>
+<%= @post.title %>
 
 <!-- end -->
 
-    <%= @post.title %>
   </div>
   <div class="prose max-w-none text-sm md:text-base">
   <!-- Tags Display -->
@@ -31,9 +35,8 @@
   <div class="flex flex-wrap items-center gap-1">
     <% if @post.tags.any? %>
       <% @post.tags.each do |tag| %>
-        <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
-          <%= tag.name %>
-        </span>
+         <%= link_to tag.name, posts_path(tag: tag.name),
+              class: "bg-blue-700 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600" %>
       <% end %>
     <% else %>
       <p class="text-gray-400">No tags yet</p>
@@ -48,9 +51,9 @@
 </div>
 <div class=" mt-15 px-4 md:px-8 lg:px-16">
 
-<h1 class="text-2xl font-bold text-sm md:text-base pb-5">New Comment</h1>
+<h1 class="max-w-full md:max-w-4xl mx-auto text-2xl font-bold text-sm md:text-base pb-5">Comments</h1>
 
-<div class="max-w-full md:max-w-3xl mx-1 md:mx-0 bg-gray-800 border border-gray-600 rounded-md  px-4 md:px-[0.5em] py-4 md:py-[1em] ">
+<div class="max-w-full md:max-w-4xl mx-auto bg-gray-800 border border-gray-600 rounded-md  px-4 md:px-[0.5em] py-4 md:py-[1em] ">
 
 <%= form_with model: [@post, @post.comments.build] do |form| %>
   
@@ -66,7 +69,7 @@
   <% if @post.comments.any? %>
     <% @comments.each do |comment| %>
       <div class="comment pt-6">
-        <p><%= comment.content %></p>
+        <p><%= comment.content%></p>
       </div>
     <% end %>
   <% else %>
@@ -78,3 +81,5 @@
 </div>
 </div>
 
+<div class="pb-20">
+</div>
