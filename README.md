@@ -23,3 +23,47 @@ Study Hub is a forum website specifically for students to ask questions about th
    <li>Devise</li>
    <li>Act-as-taggable-on</li>
  </ul>
+
+ # Requirement
+Before you begin, ensure you have installed:
+```
+Rails 8.1.1
+Ruby 3.4.7
+Yarn
+```
+
+# Installation
+1. Clone Repo
+```
+git clone https://github.com/w99dyy/studyhub
+cd studyhub
+```
+2. Install Dependencies
+```
+bundle install
+yarn install
+```
+3. Set Up Database
+```
+rails db:create
+rails db:migrate
+```
+3. Add seed for testing and development `Optional`
+```
+rails db:seed
+```
+
+5. Start the Development Server
+```
+./bin/dev
+```
+Then visit `http://localhost:3000` in your browser.
+
+## For testing
+```
+rails test
+```
+
+# Database Configuration
+The project uses SQLite by default. To change databases, update `config/database.yml`.
+
