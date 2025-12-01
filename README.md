@@ -8,7 +8,7 @@ Study Hub is a forum website specifically for students to ask questions about th
   <li>Easy to use</li>
   <li>Tags for every study subject</li>
   <li>Show all study subject posts with tags search</li>
-  <li>Comments to share opinions and discuss study subjects/li>
+  <li>Comments to share opinions and discuss study subjects</li>
     <li>User can create/delete/edit Post</li>
 </ul>
 
