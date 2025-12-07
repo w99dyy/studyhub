@@ -26,9 +26,9 @@
   </head>
   
 
-      <body class="bg-white dark:bg-gray-900 min-h-screen text-white">
-        <header class="bg-white dark:bg-gray-800 px-3 py-3 ring shadow-xl ring-gray-900/5">
-      <h1 class="text-3xl sm:text-5xl font-bold dark:text-white"><%= link_to "StudyHub", root_path %></h1>
+      <body class="bg-gray-900 min-h-screen text-white">
+        <header class="bg-gray-800 px-3 py-3 ring shadow-xl ring-gray-900/5">
+      <h1 class="text-3xl sm:text-5xl font-bold text-white"><%= link_to "StudyHub", root_path %></h1>
 
 
  <div class="flex flex-grid sm:flex-row items-end sm:items-center gap-2 sm:gap-0 absolute top-3 right-4 gap-0 ">
@@ -56,7 +56,7 @@
     <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
     
     <% else %>
-      <%= button_to "Sign in", new_user_session_path %> 
+      <%= link_to "Sign in", new_user_session_path %> 
     <% end %>
      <%#<div class="text-sm ">Welcome <%= current_user.email</div>%> 
   </div>

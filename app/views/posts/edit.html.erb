@@ -7,6 +7,7 @@
   <%= form.label :title %>
   <%= form.text_field :title,
   class: "w-full px-3 py-2 text-white bg-gray-800 border border-gray-600 rounded-md" %> 
+
   <!-- This will automatically show the current title -->
   
 
@@ -17,11 +18,16 @@
 
   <%= form.label :content %>
   <%= form.rich_text_area :content,
-               class: "w-full px-3 py-2 text-white bg-gray-800 border border-gray-600 rounded-md" %>
+   class: "w-full px-3 py-2 text-white bg-gray-800 border border-gray-600 rounded-md" %>
+
   <!-- This will automatically show the current content -->
+
+
+  <!-- Update button -->
 
   <div class= "actions bg-cyan-500 mt-4 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium  rounded-full shadow transition duration-200">
 
+  
   <%= form.submit "Update Post" %>
 
   </div>

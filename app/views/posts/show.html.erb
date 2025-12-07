@@ -1,4 +1,4 @@
-<!-- <span class="max-w-full md:max-w-3xl mx-4 md:mx-15 text-xl md:text-2xl lg:text-3xl font-bold md:pb-2 inline-block pt-4">  </span> -->
+<div class="pb-20 mx-auto">
 
 <div class="max-w-full md:max-w-4xl mx-auto bg-gray-800 border border-gray-700 rounded-md mb-4 px-4 md:px-[1em] py-4 md:py-[2em] mt-7">
   <div class="text-xl md:text-2xl lg:text-3xl font-bold md:pb-5">
@@ -29,6 +29,7 @@
 
   </div>
   <div class="prose max-w-none text-sm md:text-base">
+  
   <!-- Tags Display -->
   <div class="flex flex-wrap items-center gap-3 pb-8">
     <strong class="text-lg font-bold whitespace-nowrap">Tags:</strong>
@@ -59,7 +60,7 @@
   
   <div class="bg-gray-800 border border-gray-600 rounded-md inline-block ">
   <%= form.text_field :content,
-  class: "w-full px-6 py-3 pr-20 outline-none",
+  class: "w-full px-6 py-3 pr-20 outline-none ",
     placeholder: "Add a comment" %>
     </div>
   <div class="actions bg-cyan-500 float-right mt-4 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium rounded-full shadow transition duration-200">
@@ -68,8 +69,39 @@
 
   <% if @post.comments.any? %>
     <% @comments.each do |comment| %>
-      <div class="comment pt-6">
+      
+      <div class="comment pt-6 relative">
         <p><%= comment.content%></p>
+
+        <!-- three dots -->
+        <% if current_user && current_user == comment.user %>
+          <div class="absolute top-2 right-2 md:right-4">
+          <button class="peer hover:bg-gray-700 rounded-full outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
+          <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+        </svg>
+        </button>
+        </div>
+        <% end %>
+
+
+        
+          
+        </div>
+
+        <div class="pt-2 text-sm text-gray-400 ">
+            <div>
+              <span><%= time_ago_in_words(comment.updated_at) %> ago</span>
+              <% if comment.updated_at.present? && comment.updated_at > comment.created_at + 1.minute %>
+                <span><%= time_ago_in_words(comment.updated_at) %> ago</span>
+
+               
+              <% end %>
+              
+            
+               
+              
+          </div>
       </div>
     <% end %>
   <% else %>
@@ -78,8 +110,7 @@
 <% end %>
 
 
-</div>
-</div>
 
-<div class="pb-20">
+</div>
+</div>
 </div>

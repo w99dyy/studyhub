@@ -14,13 +14,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :posts do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy]
 end
 
 get '/profile', to: 'user#show', as: 'user_profile'
 get '/posts/:id/edit', to: 'posts#edit'
 patch '/posts/:id', to: 'posts#update'
 get 'tags/:name', to: 'tags#show'
+
 resources :posts
 
 

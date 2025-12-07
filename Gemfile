@@ -74,10 +74,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+    gem 'database_cleaner'
+
 end
 
 gem "tailwindcss-rails", "~> 4.4"
 
 group :development, :test do
   gem 'rspec-rails', '~> 8.0.0'
+  gem 'factory_bot_rails'  # ← ADD THIS LINE
+  gem 'faker' 
 end
