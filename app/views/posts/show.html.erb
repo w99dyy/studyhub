@@ -108,7 +108,7 @@
 
         <div class="pt-2 text-sm text-gray-400 ">
             <div>
-              <span>By <%= comment.user.email %> • <%= time_ago_in_words(comment.updated_at) %> ago</span>
+              <span>By <%= comment.user.username %> • <%= time_ago_in_words(comment.updated_at) %> ago</span>
               <% if comment.updated_at.present? && comment.updated_at > comment.created_at + 1.minute %>
                 <span> <%= time_ago_in_words(comment.updated_at) %> ago</span>
 

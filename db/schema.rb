@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_27_143558) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_09_154540) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -69,6 +69,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_143558) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "avatar_url"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.string "username"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
@@ -119,5 +129,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_27_143558) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "taggings", "tags"
 end

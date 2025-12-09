@@ -62,7 +62,9 @@
           
           <div class="flex justify-between text-sm text-gray-400 ">
             <div>
-              <span class="mr-4">📅 Posted at <%= time_ago_in_words(post.updated_at) %> ago</span>
+              <span class="mr-4">
+              <span> By <%= post.user.username %> • </span>
+              📅 Posted at <%= time_ago_in_words(post.updated_at) %> ago</span>
               <% if post.updated_at.present? && post.updated_at > post.created_at + 1.minute %>
                 <span>✏️ Edited at <%= time_ago_in_words(post.updated_at) %> ago</span>
               <% end %>
