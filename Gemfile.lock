@@ -404,6 +404,8 @@ GEM
     thruster (0.1.16-aarch64-linux)
     thruster (0.1.16-x86_64-linux)
     timeout (0.4.4)
+    trix-rails (2.4.0)
+      rails (> 4.1)
     tsort (0.2.0)
     turbo-rails (2.0.20)
       actionpack (>= 7.1.0)
@@ -472,6 +474,7 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss-rails (~> 4.4)
   thruster
+  trix-rails
   turbo-rails
   tzinfo-data
   web-console
