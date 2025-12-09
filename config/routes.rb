@@ -22,7 +22,5 @@ get '/posts/:id/edit', to: 'posts#edit'
 patch '/posts/:id', to: 'posts#update'
 get 'tags/:name', to: 'tags#show'
 
-resources :posts
-
 
 end

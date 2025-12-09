@@ -57,16 +57,25 @@
 <div class="max-w-full md:max-w-4xl mx-auto bg-gray-800 border border-gray-600 rounded-md  px-4 md:px-[0.5em] py-4 md:py-[1em] ">
 
 <%= form_with model: [@post, @post.comments.build] do |form| %>
-  
+
   <div class="bg-gray-800 border border-gray-600 rounded-md inline-block ">
-  <%= form.text_field :content,
-  class: "w-full px-6 py-3 pr-20 outline-none ",
+
+  <%= form.text_area :content, 
+   rows: 1,
+   cols: 60,
+   data: {
+  controller: "textarea-autogrow"
+  },
+  class: "resize-none w-full px-6 py-3 outline-none overflow-hidden ",
     placeholder: "Add a comment" %>
-    </div>
-  <div class="actions bg-cyan-500 float-right mt-4 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium rounded-full shadow transition duration-200">
+
+    <div class="actions bg-cyan-500 float-right mt-4 mb-2 mr-2 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium rounded-full shadow transition duration-200">
   <%= form.submit "Comment" %>
   </div>
+  <% end %>
 
+    </div>
+  
   <% if @post.comments.any? %>
     <% @comments.each do |comment| %>
       
@@ -75,25 +84,33 @@
 
         <!-- three dots -->
         <% if current_user && current_user == comment.user %>
-          <div class="absolute top-2 right-2 md:right-4">
-          <button class="peer hover:bg-gray-700 rounded-full outline-none">
+          <div class="absolute top-2 right-2 md:right-4 inline-block">
+          <button type="button" class="peer hover:bg-gray-700 rounded-full outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
           <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
         </svg>
         </button>
+
+          <div class="peer absolute text-sm right-0 mt-2 opacity-0 invisible peer-focus:opacity-100 peer-focus:visible transition-all duration-200 bg-gray-800 rounded-lg shadow-[0_20px_40px_-1px_rgba(0,0,0,0.3)] w-48 z-10">
+            
+          <%= button_to "Delete Comment",
+            post_comment_path(@post, comment), 
+            data: { confirm: "Are you sure you want to delete this comment?" },
+            class: "block w-full text-left px-4 py-2 text-sm hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400",
+             method: :delete %>
+          </div>
+
         </div>
         <% end %>
 
-
-        
           
         </div>
 
         <div class="pt-2 text-sm text-gray-400 ">
             <div>
-              <span><%= time_ago_in_words(comment.updated_at) %> ago</span>
+              <span>By <%= comment.user.email %> • <%= time_ago_in_words(comment.updated_at) %> ago</span>
               <% if comment.updated_at.present? && comment.updated_at > comment.created_at + 1.minute %>
-                <span><%= time_ago_in_words(comment.updated_at) %> ago</span>
+                <span> <%= time_ago_in_words(comment.updated_at) %> ago</span>
 
                
               <% end %>
@@ -106,7 +123,6 @@
     <% end %>
   <% else %>
     <p>No comments yet.</p>
-  <% end %>
 <% end %>
 
 
