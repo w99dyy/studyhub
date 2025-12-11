@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
   
   before_validation :set_default_username, on: :create
   
+
   private
   
   def set_default_username
