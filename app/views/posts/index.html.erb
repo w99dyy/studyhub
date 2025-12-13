@@ -8,15 +8,16 @@
 
   <!-- Posts List -->
 
-  <div class="posts-container">
+  <div class="posts-container ">
     <% if @posts.any? %>
       <% @posts.each do |post| %>
-        <div class="post-card bg-gray-800 rounded-lg p-6 mb-6 border border-gray-700">
+        <div class="post-card bg-gray-800 rounded-lg p-6 mb-6 border border-gray-700 ">
 
           <!-- Post Title -->
 
-          <h2 class="text-2xl font-bold text-white mb-3">
-            <%= link_to post.title, post, class: "hover:text-cyan-400 transition" %>
+          <h2 class="text-2xl font-bold text-white mb-3 ">
+           <%= link_to truncate(post.title, length: 30), post, class: "hover:text-cyan-400 transition" %>
+
           </h2>
           
           <!-- Post Content Preview -->

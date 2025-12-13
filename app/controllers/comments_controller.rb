@@ -7,14 +7,14 @@ class CommentsController < ApplicationController
 
         if @comment.save
             redirect_to @post, notice: "Comment saved!"
-            
+
         else
             redirect_to @post, alert: "Comment won't be saved."
         end
     end
 
         def destroy
-            @comment = Comment.find(params[:id])
+            @comment = current_user.comments.find(params[:id])
             @comment.destroy
             redirect_to @comment.post, notice: "comment deleted!"
 end
@@ -23,13 +23,5 @@ private
 
 def comment_params
     params.require(:comment).permit(:content)
-
 end
-
-def set_comment
-    @comment = Comment.find(params[:id])
 end
-
-
-end
-

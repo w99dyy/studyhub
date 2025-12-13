@@ -1,23 +1,23 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action :authorize_user, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!, except: [ :index, :show ]
+    before_action :set_post, only: [ :show, :edit, :update, :destroy ]
+    before_action :authorize_user, only: [ :edit, :update, :destroy ]
 
 
 
-    
+
     def index
       if params[:tag].present?
-        @posts = Post.tagged_with(params[:tag]).order(created_at: :desc)
+        @posts = Post.by_tag(params[:tag]).recent
       else
         @posts = Post.all.order(created_at: :desc)
       end
     end
 
-  
-    def show
-        @comments = @post.comments.order(created_at: :desc) 
 
+    def show
+      @post = Post.includes(:comments, :user).find(params[:id])
+        @comments = @post.comments.includes(:user).order(created_at: :desc)
       end
 
     def new
@@ -34,47 +34,42 @@ class PostsController < ApplicationController
         flash.now[:alert] = @post.errors.full_messages.to_sentence
         render :new, status: :unprocessable_entity
        end
-
-    
       end
-      
-    
-      
+
+
+
     def edit
         @post = Post.find(params[:id])
-
-
     end
 
     def update
         if @post.update(post_params)
             redirect_to @post, notice: "Post created successfully!"
         else
-            #failure
+          # failure
 
         end
     end
 
     def destroy
-    
     @post.destroy
     redirect_to root_path, notice: "Post deleted successfully!"
   end
+  private
 
-    def set_post  #Find the post
+    def set_post  # Find the post
         @post = Post.find_by(id: params[:id])
         unless @post
             redirect_to posts_path, alert: "Post not found."
-          end
         end
-    
-    private
+        end
+
+
 
     def post_params
       params.require(:post).permit(:title, :content, :tag_list)
-
     end
-    
+
 
     def authorize_user
         redirect_to root_path, alert: "Not Auothrized" unless @post.user == current_user

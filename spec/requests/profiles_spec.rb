@@ -1,25 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe "Profiles", type: :request do
-  describe "GET /show" do
-    it "returns http success" do
-      get "/profiles/show"
+RSpec.describe "Profile", type: :request do
+  describe "GET /profile" do
+    it "works" do
+      get profile_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/profiles/edit"
+  describe "GET /profile/edit" do
+    it "works" do
+      get edit_profile_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /update" do
-    it "returns http success" do
-      get "/profiles/update"
+  describe "patch /profile" do
+    it "works" do
+      patch profile_path
       expect(response).to have_http_status(:success)
     end
   end
-
 end

@@ -20,13 +20,13 @@ gem "cssbundling-rails"
 gem "jbuilder"
 
 # Authentication
-gem 'devise'
+gem "devise"
 
 # Tagging
-gem 'acts-as-taggable-on'
+gem "acts-as-taggable-on"
 
 # trix editor
-gem 'trix-rails'
+gem "trix-rails"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -74,14 +74,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-    gem 'database_cleaner'
-
+    gem "database_cleaner"
 end
 
 gem "tailwindcss-rails", "~> 4.4"
 
 group :development, :test do
-  gem 'rspec-rails', '~> 8.0.0'
-  gem 'factory_bot_rails'  # ← ADD THIS LINE
-  gem 'faker' 
+  gem "rspec-rails", "~> 8.0.0"
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "shoulda-matchers", "~> 6.0"
 end
