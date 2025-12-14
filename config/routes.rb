@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     resources :comments, only: [ :create, :edit, :update, :destroy ]
 end
 
-get "/profile", to: "profiles#show", as: "profile"
-get "/profile/edit", to: "profiles#edit", as: "edit_profile"
-patch "/profile", to: "profiles#update"
+get "/profile/:username", to: "profiles#show", as: "profile"
+get "/profile/:username/edit", to: "profiles#edit", as: "edit_profile"
+patch "/profile/:username", to: "profiles#update"
 get "tags/:name", to: "tags#show"
 end

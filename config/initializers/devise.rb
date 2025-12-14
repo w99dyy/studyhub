@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -36,17 +36,17 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
-  # ==> Configuration for any authentication mechanism
-  # Configure which keys are used when authenticating a user. The default is
-  # just :email. You can configure it to use [:username, :subdomain], so for
-  # authenticating a user, both parameters are required. Remember that those
-  # parameters are used only when authenticating and not when retrieving from
-  # session. If you need permissions, you should implement that in a before filter.
-  # You can also supply a hash where the value is a boolean determining whether
-  # or not authentication should be aborted when the value is not present.
- config.authentication_keys = [:email]
+ # ==> Configuration for any authentication mechanism
+ # Configure which keys are used when authenticating a user. The default is
+ # just :email. You can configure it to use [:username, :subdomain], so for
+ # authenticating a user, both parameters are required. Remember that those
+ # parameters are used only when authenticating and not when retrieving from
+ # session. If you need permissions, you should implement that in a before filter.
+ # You can also supply a hash where the value is a boolean determining whether
+ # or not authentication should be aborted when the value is not present.
+ config.authentication_keys = [ :email ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -58,12 +58,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [:email]
+  config.case_insensitive_keys = [ :email ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [:email]
+  config.strip_whitespace_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -97,7 +97,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:http_auth]
+  config.skip_session_storage = [ :http_auth ]
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
@@ -226,25 +226,26 @@ Devise.setup do |config|
   # change their passwords.
   config.reset_password_within = 6.hours
 
-  # When set to false, does not sign a user in automatically after their password is
-  # reset. Defaults to true, so a user is signed in automatically after a reset.
-  # config.sign_in_after_reset_password = true
+   # When set to false, does not sign a user in automatically after their password is
+   # reset. Defaults to true, so a user is signed in automatically after a reset.
+   # config.sign_in_after_reset_password = true
 
-  # ==> Configuration for :encryptable
-  # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
-  # You can use :sha1, :sha512 or algorithms from others authentication tools as
-  # :clearance_sha1, :authlogic_sha512 (then you should set stretches above to 20
-  # for default behavior) and :restful_authentication_sha1 (then you should set
-  # stretches to 10, and copy REST_AUTH_SITE_KEY to pepper).
-  #
-  # Require the `devise-encryptable` gem when using anything other than bcrypt
-  # config.encryptor = :sha512
+   # ==> Configuration for :encryptable
+   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
+   # You can use :sha1, :sha512 or algorithms from others authentication tools as
+   # :clearance_sha1, :authlogic_sha512 (then you should set stretches above to 20
+   # for default behavior) and :restful_authentication_sha1 (then you should set
+   # stretches to 10, and copy REST_AUTH_SITE_KEY to pepper).
+   #
+   # Require the `devise-encryptable` gem when using anything other than bcrypt
+   # config.encryptor = :sha512
 
-  # ==> Scopes configuration
-  # Turn scoped views on. Before rendering "sessions/new", it will first check for
-  # "users/sessions/new". It's turned off by default because it's slower if you
-  # are using only default views.
-  # config.scoped_views = false
+   # ==> Scopes configuration
+   # Turn scoped views on. Before rendering "sessions/new", it will first check for
+   # "users/sessions/new". It's turned off by default because it's slower if you
+   # are using only default views.
+   config.scoped_views = true
+  # config.mappings = { user: User }
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -305,12 +306,11 @@ Devise.setup do |config|
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
 
-  # ==> Configuration for :registerable
+    # ==> Configuration for :registerable
 
-  # When set to false, does not sign a user in automatically after their password is
-  # changed. Defaults to true, so a user is signed in automatically after changing a password.
-  # config.sign_in_after_change_password = true
+    # When set to false, does not sign a user in automatically after their password is
+    # changed. Defaults to true, so a user is signed in automatically after changing a password.
+    # config.sign_in_after_change_password = true
 
-    config.navigational_formats = ['*/*', :html, :turbo_stream]
-
+    config.navigational_formats = [ "*/*", :html, :turbo_stream ]
 end

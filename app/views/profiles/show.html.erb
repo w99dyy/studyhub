@@ -1,10 +1,71 @@
-<div class="mt-3">
-<%= image_tag user_avatar(current_user, 150), class: "rounded-full" %>
+<div class="flex mt-3">
+<div class="w-1/5">
 
+<%= image_tag user_avatar(current_user, 150), class: "rounded-full" %>
 <h1 class="mt-7 text-3xl font-bold">
 <%= current_user.username || current_user.email %>
 </h1>
+</div>
 
+<div class="w-2/3 flex flex-col items-center">
 
-<%= current_user.posts %>
+<% if @posts.any? %>
+  <% @user.posts.each do |post| %>
+    <div class="post-card bg-gray-800 rounded-lg p-6 mb-6 border border-gray-700 w-full max-w-3xl" >
+
+      <!-- Post Title -->
+
+      <h2 class="text-2xl font-bold text-white mb-3 ">
+       <%= link_to truncate(post.title, length: 30), post, class: "hover:text-cyan-400 transition" %>
+
+      </h2>
+      
+      <!-- Post Content Preview -->
+
+      <div class="post-content mb-4">
+        <p class="text-gray-300 leading-relaxed">
+          <%= truncate(post.content.to_plain_text, length: 200) %>
+        </p>
+      </div>
+      
+      <!-- Tags -->
+
+      <% if post.tags.any? %>
+        <div class="tags mb-4">
+          <div class="flex flex-wrap gap-2">
+            <% post.tags.each do |tag| %>
+             <%= link_to tag.name, posts_path(tag: tag.name),
+          class: "bg-blue-700 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600" %>
+
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      
+      <!-- Post Metadata -->
+      
+      <div class="post-meta flex justify-between items-center text-sm text-gray-400">
+        <div>
+          <span class="mr-4">📅 <%= time_ago_in_words(post.created_at) %> ago</span>
+          <% if post.updated_at != post.created_at %>
+            <span>✏️ Updated <%= time_ago_in_words(post.updated_at) %> ago</span>
+          <% end %>
+        </div>
+        
+        <%= link_to "Go to post →", post, class: "text-cyan-400 hover:text-cyan-300 font-semibold" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+
+  <!-- Empty State -->
+  
+  <div class="empty-state text-center py-16 bg-gray-800 rounded-lg">
+    <div class="text-6xl mb-4">📝</div>
+    <h3 class="text-2xl font-bold text-white mb-2">No posts yet</h3>
+    <%= link_to "Create First Post", new_post_path, 
+        class: "bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold transition" %>
+  </div>
+<% end %>
+</div>
 </div>

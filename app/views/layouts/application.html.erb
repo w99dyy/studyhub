@@ -56,7 +56,7 @@
   <%= image_tag user_avatar(current_user, 50), class: "rounded-full cursor-pointer peer md:flex", tabindex: "0" %>
       <div class="absolute text-sm right-0 mt-4 opacity-0 invisible peer-focus:opacity-100 peer-focus:visible transition-all duration-200 bg-gray-800 rounded-lg shadow-[0_20px_40px_-1px_rgba(0,0,0,0.3)] w-48 z-10" if user_avatar?>
       <!-- Hover menu -->
-           <%= link_to "Profile", profile_path, class: "block w-full text-left px-4 py-3 hover:bg-gray-700 border-b border-gray-700 rounded-lg" %>
+           <%= link_to "Profile", profile_path(current_user.username), class: "block w-full text-left px-4 py-3 hover:bg-gray-700 border-b border-gray-700 rounded-lg" %>
     <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "block w-full text-left px-4 py-3 hover:bg-gray-700 border-b border-gray-700 rounded-lg" %> 
 
       </div>

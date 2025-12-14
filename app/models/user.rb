@@ -15,4 +15,8 @@ class User < ApplicationRecord
   delegate :avatar_url, to: :profile
 
   has_one_attached :avatar
+
+  def to_param
+    username
+  end
 end
