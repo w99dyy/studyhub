@@ -2,9 +2,8 @@
 
 <div class="flex max-w-full md:max-w-5xl mx-auto bg-gray-800 border-gray-700 rounded-md mt-7">
 
-<div class="flex-shrink-0 bg-gray-850 p-6 bg-gray-700 rounded-md">
-
-<%= image_tag user_avatar(@post.user, 80), class: "mb-4" %>
+<div class="flex-shrink-0 bg-gray-850 p-6 bg-gray-700 rounded-md ">
+<%= image_tag user_avatar(@post.user, 80), class: "mb-4 mx-auto" %>
 <div class="text-xs md:text-sm font-medium text-gray-300 truncate text-center">
 <%= @post.user.username %>
 
@@ -12,7 +11,6 @@
 <span class="text-sm text-gray-300 truncate text-center block"> <%= time_ago_in_words(@post.created_at) %> ago </span>
 
 </div>
-
 <div class="md:pb-5 mb-4 px-4 md:px-[1em] py-4 md:py-[1em] min-w-0">
 
     <div class="flex justify-between items-start mb-4 pr-10">
@@ -99,7 +97,7 @@
 
     </div>
 
-    <div class="actions bg-cyan-500 float-right mt-4 mb-1 mr-2 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium rounded-full shadow transition duration-200">
+    <div class="actions bg-blue-700 hover:bg-blue-600 float-right mt-4 mb-1 mr-2 pt-1 pb-1 pr-10 pl-10 inline-block text-white font-medium rounded-full shadow transition duration-200">
   <%= form.submit "Comment" %>
   </div>
   <% end %>
