@@ -13,9 +13,12 @@ Study Hub is a forum website specifically for students to ask questions about th
 </ul>
 
 # Screenshots
+![image_alt](https://github.com/w99dyy/studyhub/blob/180fdcadd60b87890b3b0bbf1dc083cae7b4887d/metadata/images/1.png)
+![image_alt](https://github.com/w99dyy/studyhub/blob/180fdcadd60b87890b3b0bbf1dc083cae7b4887d/metadata/images/2.png)
+![image_alt](https://github.com/w99dyy/studyhub/blob/180fdcadd60b87890b3b0bbf1dc083cae7b4887d/metadata/images/3.png)
+![image_alt](https://github.com/w99dyy/studyhub/blob/180fdcadd60b87890b3b0bbf1dc083cae7b4887d/metadata/images/4.png)
 
 # Development
-
  StudyHub is built with Ruby and it's framework Ruby on Rails.
  Frontend: **HTML, CSS (Tailwind CSS)**
 
@@ -24,6 +27,9 @@ Study Hub is a forum website specifically for students to ask questions about th
  <ul>
    <li>Devise</li>
    <li>Act-as-taggable-on</li>
+   <li>shoulda-matchers, "~> 6.0"</li>
+   <li>FactoryBot</li>
+   <li>Rspec</li>
  </ul>
 
  # Requirement
