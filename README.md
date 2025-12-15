@@ -12,6 +12,8 @@ Study Hub is a forum website specifically for students to ask questions about th
     <li>User can create/delete/edit Post</li>
 </ul>
 
+# Screenshots
+
 # Development
 
  StudyHub is built with Ruby and it's framework Ruby on Rails.
