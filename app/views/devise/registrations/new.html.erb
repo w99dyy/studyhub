@@ -12,13 +12,13 @@
    autofocus: true,  
     autocomplete: "username",
     required: true,
-    class: "border-2 border-cyan-700 rounded-full focus:outline-none" %> 
+    class: "border-2 border-cyan-700 rounded-full focus:outline-none px-4" %> 
       </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email",
-    class: "border-2 border-cyan-700 rounded-full focus:outline-none" %>
+    class: "border-2 border-cyan-700 rounded-full focus:outline-none px-4" %>
   </div>
 
   <div class="field mt-3">
@@ -27,16 +27,16 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password",
-    class: "border-2 border-cyan-700 rounded-full focus:outline-none" %>
+    class: "border-2 border-cyan-700 rounded-full focus:outline-none px-4" %>
   </div>
 
   <div class="field mt-3">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password",
-    class: "border-2 border-cyan-700 rounded-full focus:outline-none" %>
+    class: "border-2 border-cyan-700 rounded-full focus:outline-none px-4" %>
   </div>
 
-    <div class= "actions bg-cyan-500 mt-4 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium  rounded-full shadow transition duration-200">
+    <div class= "actions bg-blue-700 hover:bg-blue-600 mt-4 pt-1 pb-1 pr-10 pl-10 inline-block text-white font-medium  rounded-full shadow transition duration-200">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>

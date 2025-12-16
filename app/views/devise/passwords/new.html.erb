@@ -8,11 +8,11 @@
   <div class="field pt-4">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email",
-          class: "border-2 border-cyan-700 rounded-full focus:outline-none" %>
+          class: "border-2 border-cyan-700 rounded-full focus:outline-none px-4" %>
   </div>
 
-    <div class= "actions bg-cyan-500 mt-4 pt-1 pb-1 pr-10 pl-10 inline-block hover:bg-cyan-600 text-white font-medium  rounded-full shadow transition duration-200">
-    <%= f.submit "Send me reset password instructions" %>
+    <div class= "actions bg-blue-700 hover:bg-blue-600 mt-4 pt-1 pb-1 pr-10 pl-10 mb-2 inline-block text-white font-medium  rounded-full shadow transition duration-200">
+    <%= f.submit "Reset password" %>
   </div>
 <% end %>
 
