@@ -1,20 +1,19 @@
 {
-  "name": "app",
+"name": "app",
   "private": true,
   "devDependencies": {
     "esbuild": "^0.27.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.20",
     "@rails/actiontext": "^8.1.100",
-    "@tailwindcss/cli": "^4.1.17",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
     "stimulus-textarea-autogrow": "^4.1.0",
-    "tailwindcss": "^4.1.17",
     "trix": "^2.1.15"
   }
 }
