@@ -42,7 +42,7 @@ Study Hub is a forum website specifically for students to ask questions about th
 Before you begin, ensure you have installed:
 ```
 Rails 8.1.1
-Ruby 3.4.7
+Ruby 3.4.8
 Yarn
 ```
 
