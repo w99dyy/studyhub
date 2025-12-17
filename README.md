@@ -21,8 +21,12 @@ Study Hub is a forum website specifically for students to ask questions about th
 ![image_alt](https://github.com/w99dyy/studyhub/blob/271a727877e8c3b208beac8b29f0e7121b77bebc/metadata/images/5.png)
 
 # Development
- StudyHub is built with Ruby and it's framework Ruby on Rails.
- Frontend: **HTML, CSS (Tailwind CSS)**
+ <ul>
+   <li>HTML</li>
+   <li>Ruby ~> 3.4.8</li>
+   <li>Ruby on Rails ~> 8.1.1</li>
+   <li>Tailwind ~> 4.4</li>
+ </ul>
 
  ## USED GEMS
 
