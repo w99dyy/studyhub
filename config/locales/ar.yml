@@ -1,0 +1,29 @@
+ar:
+  datetime:
+    distance_in_words:
+      less_than_x_minutes:
+        one: "منذ أقل من دقيقة"
+        other: "أقل من %{count} دقائق"
+      about_x_minutes:
+        one: "منذ دقيقة"
+        other: "%{count} دقائق"
+      about_x_hours:
+        one: "منذ ساعة"
+        other: "%{count} ساعات"
+      about_x_days:
+        one: "منذ يوم"
+        other: "%{count} أيام"
+      about_x_months:
+        one: "منذ شهر"
+        other: "%{count} أشهر"
+      about_x_years:
+        one: "منذ سنة"
+        other: "%{count} سنوات"
+
+  Recent_Posts: "أحدث المنشورات"
+  By: "بواسطة"
+  Posted: "نشر"
+  Home: "الرئيسية"
+  All_Posts: "جميع المنشورات"
+  Browse_all_students_posts: "تصفح جميع منشورات الطلاب"
+  Posts: "المنشورات"

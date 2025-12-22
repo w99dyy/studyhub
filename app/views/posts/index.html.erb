@@ -2,8 +2,8 @@
   <!-- Page Header -->
 
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-white mb-4 pt-5">All Posts</h1>
-    <p class="text-gray-400">Browse all students posts</p>
+    <h1 class="text-4xl font-bold text-white mb-4 pt-5"><%= t :All_Posts %></h1>
+    <p class="text-gray-400"><%= t :Browse_all_students_posts %></p>
   </div>
 
   <!-- Posts List -->
@@ -47,8 +47,8 @@
           <div class="flex justify-between text-sm text-gray-400 ">
             <div>
               <span class="mr-4">
-              <span> By <%= post.user.username %> • </span>
-              📅 Posted <%= time_ago_in_words(post.updated_at) %> ago</span>
+              <span> <%= t :By %> <%= post.user.username %> • </span>
+              📅 <%= t :Posted%> <%= time_ago_in_words(post.updated_at) %> ago</span>
               <% if post.updated_at.present? && post.updated_at > post.created_at + 1.minute %>
                 <span>✏️ Edited <%= time_ago_in_words(post.updated_at) %> ago</span>
               <% end %>
