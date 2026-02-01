@@ -84,6 +84,8 @@ end
 
 gem "tailwindcss-rails", "~> 4.4"
 
+gem "ruby-vips", "~> 2.3"
+
 group :development, :test do
   gem "rspec-rails", "~> 8.0.0"
   gem "factory_bot_rails"
