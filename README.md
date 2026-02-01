@@ -23,7 +23,7 @@ Study Hub is a forum website specifically for students to ask questions about th
 # Development
  <ul>
    <li>HTML</li>
-   <li>Ruby ~> 3.4.8</li>
+   <li>Ruby ~> 3.4.</li>
    <li>Ruby on Rails ~> 8.1.1</li>
    <li>Tailwind ~> 4.4</li>
  </ul>
