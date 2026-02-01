@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :tags
   has_rich_text :content
   acts_as_taggable_on :tags, :subjects
+  has_many_attached :images
+
 
   validates :title, presence: true
   validates :content, presence: true
